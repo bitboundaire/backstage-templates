@@ -8,7 +8,6 @@ metadata:
   tags: [react, material-ui, recommended]
 
 spec:
-  owner: web@example.com
   type: website
   parameters:
     - title: Provide some simple information
