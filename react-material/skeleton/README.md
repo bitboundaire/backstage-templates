@@ -1,7 +1,7 @@
-## {{ values.component_id }}
+## ${{ values.component_id }}
 
-{{ values.description }}
+${{ values.description }}
 
-{{ values.destination }}
+${{ values.destination }}
 
-{{ values.owner }}
+${{ values.owner }}

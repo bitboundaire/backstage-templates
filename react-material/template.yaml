@@ -8,10 +8,13 @@ metadata:
   tags: [react, material-ui, recommended]
 
 spec:
+  owner: web@example.com
   type: website
   parameters:
-    - title: Project information
-      required: [component_id, owner]
+    - title: Provide some simple information
+      required:
+        - component_id
+        - owner
       properties:
         component_id:
           title: Name
@@ -41,38 +44,39 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
-steps:
-  - id: template
-    name: Fetch Skeleton + Template
-    action: fetch:template
-    input:
-      url: ./skeleton
-      copyWithoutRender:
-        - .github/workflows/*
-      values:
-        component_id: ${{ parameters.component_id }}
-        description: ${{ parameters.description }}
-        destination: ${{ parameters.repoUrl | parseRepoUrl }}
-        owner: ${{ parameters.owner }}
-  - id: publish
-    name: Publish
-    action: publish:github
-    input:
-      allowedHosts: ["github.com"]
-      description: This is ${{ parameters.component_id }}
-      repoUrl: ${{ parameters.repoUrl }}
-  - id: register
-    name: Register
-    action: catalog:register
-    input:
-      repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-      catalogInfoPath: "/catalog-info.yaml"
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ["github.com"]
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
 
-output:
-  links:
-    - title: Repository
-      url: ${{ steps.publish.output.remoteUrl }}
-    - title: Open in catalog
-      icon: catalog
-      entityRef: ${{ steps.register.output.entityRef }}
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
