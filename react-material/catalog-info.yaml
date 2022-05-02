@@ -10,13 +10,12 @@ metadata:
     - react
 
 spec:
-  owner: web@example.com
+  owner: cesar.felipe@bitboundaire.com
   type: website
   parameters:
     - title: Provide some simple information
       required:
         - component_id
-        - owner
       properties:
         component_id:
           title: Name
