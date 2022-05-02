@@ -3,5 +3,3 @@
 ${{ values.description }}
 
 ${{ values.destination }}
-
-${{ values.owner }}
