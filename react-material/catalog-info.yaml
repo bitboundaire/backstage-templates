@@ -1,5 +1,6 @@
 apiVersion: scaffolder.backstage.io/v1beta3
-kind: Component
+kind: Template
+
 metadata:
   name: react-template
   title: React Template
@@ -7,6 +8,7 @@ metadata:
   tags:
     - recommended
     - react
+
 spec:
   owner: web@example.com
   type: website
