@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 
 metadata:
-  name: react-material-graphql-template
+  name: react-material-graphql
   title: React/Material/GraphQL
   description: This project uses React with material and GraphQL
   tags:

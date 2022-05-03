@@ -2,12 +2,13 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 
 metadata:
-  name: react-template
-  title: React Template
-  description: Create a website with react
+  name: react-material-rest
+  title: React/Material/Rest
+  description: This project uses React with material and Rest(axios)
   tags:
-    - recommended
     - react
+    - rest
+    - material-ui
 
 spec:
   owner: cesar.felipe@bitboundaire.com
