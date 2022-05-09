@@ -52,7 +52,7 @@ spec:
       name: Fetch Skeleton + Template
       action: fetch:template
       input:
-        url: ./skeleton
+        url: ./react-material-graphql/skeleton
         copyWithoutRender:
           - .github/workflows/*
         values:
